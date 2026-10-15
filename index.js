@@ -42,6 +42,46 @@ const bookStore = {
         }
     ]
 }
+// ===== MAIN CHALLENGE =====
 
+// 1. UPDATE EXISTING ELEMENT - Update the header title
+const bookStoreTitle = document.getElementById("header");
+bookStoreTitle.textContent = bookStore.name;
+
+// 2. CREATE NEW ELEMENTS - Loop through books and create elements
+const bookList = document.getElementById("book-list");
+
+bookStore.books.forEach((book) => {
+  // Create container for each book
+  const bookContainer = document.createElement("li");
+  
+  // Create title element
+  const bookTitle = document.createElement("h3");
+  bookTitle.textContent = book.title;
+  
+  // Create author element
+  const bookAuthor = document.createElement("p");
+  bookAuthor.textContent = book.author;
+  
+  // Create image element
+  const bookImage = document.createElement("img");
+  bookImage.src = book.imageUrl;  // Changed from book.image to book.imageUrl
+  bookImage.alt = book.title;
+  
+  // Append elements to container
+  bookContainer.append(bookImage);
+  bookContainer.append(bookTitle);
+  bookContainer.append(bookAuthor);
+  
+  // Append container to book list
+  bookList.append(bookContainer);
+});
+
+// ===== BONUS CHALLENGE =====
+// Delete the element with id "delete-this"
+const elementToDelete = document.getElementById("delete-this");
+if (elementToDelete) {
+  elementToDelete.remove();
+}
 // Write your code here!
 
